@@ -134,8 +134,8 @@
 
         .glowing-btn {
             margin: 10px;
-            width: 80%;
-            min-width: 340px;
+            width: 70%;
+            min-width: 360px;
             position: relative;
             color: var(--glow-color);
             cursor: pointer;
@@ -153,6 +153,12 @@
                 0px 0px 0.5em 0px var(--glow-color);
             box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
                 0px 0px 0.5em 0px var(--glow-color);
+        }
+
+        @media (max-width: 600px) {
+            .glowing-btn {
+                width: 90%;
+            }
         }
 
         .glowing-txt {
