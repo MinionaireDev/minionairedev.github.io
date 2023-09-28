@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-yellow.css">
+    <title>The Minionaire</title>
+    <link rel="icon" type="image/x-icon" href="imgs/minion-icon.png">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        body {
+            background: url("https://www.w3schools.com/howto/img_link_tree_template2_bg.jpg");
+            /* The image used for background */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box !important;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: table;
+            width: 100%;
+            height: 100%;
+            background-color: #171717;
+            color: #000;
+            line-height: 1.6;
+            position: relative;
+            font-family: sans-serif;
+            overflow: visible;
+        }
+
+        .lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            margin: auto;
+            width: 90vw;
+        }
+
+        .line {
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            top: 0;
+            left: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .line::after {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 15vh;
+            width: 100%;
+            top: -50%;
+            left: 0;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
+            -webkit-animation: drop 7s 0s infinite;
+            animation: drop 7s 0s infinite;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+            -webkit-animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+            animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+        }
+
+        .line:nth-child(1) {
+            margin-left: -25%;
+        }
+
+        .line:nth-child(1)::after {
+            -webkit-animation-delay: 2s;
+            animation-delay: 2s;
+        }
+
+        .line:nth-child(3) {
+            margin-left: 25%;
+        }
+
+        .line:nth-child(3)::after {
+            -webkit-animation-delay: 2.5s;
+            animation-delay: 2.5s;
+        }
+
+        @-webkit-keyframes drop {
+            0% {
+                top: -50%;
+            }
+
+            100% {
+                top: 110%;
+            }
+        }
+
+        @keyframes drop {
+            0% {
+                top: -50%;
+            }
+
+            100% {
+                top: 110%;
+            }
+        }
+
+        @import url("https://fonts.googleapis.com/css?family=Raleway");
+
+        :root {
+            --glow-color: #ffef64;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            overflow: visible;
+        }
+
+        body {
+            justify-content: center;
+            align-items: center;
+            background: black;
+        }
+
+        .glowing-btn {
+            margin: 10px;
+            width: 60%;
+            min-width: 240px;
+            position: relative;
+            color: var(--glow-color);
+            cursor: pointer;
+            padding: 0.2em 1em;
+            border: 0.15em solid var(--glow-color);
+            border-radius: 0.45em;
+            background: none;
+            font-family: monospace;
+            font-size: 4vh;
+            font-weight: bolder;
+
+            -webkit-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+                0px 0px 0.5em 0px var(--glow-color);
+            -moz-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+                0px 0px 0.5em 0px var(--glow-color);
+            box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+                0px 0px 0.5em 0px var(--glow-color);
+        }
+
+        .glowing-txt {
+            float: left;
+            margin-right: -0.8em;
+            -webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
+                0 0 0.45em var(--glow-color);
+            -moz-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
+                0 0 0.45em var(--glow-color);
+            text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color);
+            animation: text-flicker 3s linear infinite;
+        }
+
+        .faulty-letter {
+            opacity: 0.5;
+            animation: faulty-flicker 2s linear infinite;
+        }
+
+        .glowing-btn::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            z-index: -1;
+            background-color: var(--glow-color);
+            box-shadow: 0 0 2em 0.2em var(--glow-color);
+            transition: opacity 100ms linear;
+        }
+
+        .glowing-btn:hover {
+            color: rgba(0, 0, 0, 0.8);
+            text-shadow: none;
+            animation: none;
+        }
+
+        .glowing-btn:hover .glowing-txt {
+            animation: none;
+        }
+
+        .glowing-btn:hover .faulty-letter {
+            animation: none;
+            text-shadow: none;
+            opacity: 1;
+        }
+
+        .glowing-btn:hover:after {
+            opacity: 1;
+        }
+
+        @keyframes faulty-flicker {
+            0% {
+                opacity: 0.1;
+            }
+
+            2% {
+                opacity: 0.1;
+            }
+
+            4% {
+                opacity: 0.5;
+            }
+
+            19% {
+                opacity: 0.5;
+            }
+
+            21% {
+                opacity: 0.1;
+            }
+
+            23% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 0.5;
+            }
+
+            83% {
+                opacity: 0.4;
+            }
+
+            87% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes text-flicker {
+            0% {
+                opacity: 0.1;
+            }
+
+            2% {
+                opacity: 1;
+            }
+
+            8% {
+                opacity: 0.1;
+            }
+
+            9% {
+                opacity: 1;
+            }
+
+            12% {
+                opacity: 0.1;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            25% {
+                opacity: 0.3;
+            }
+
+            30% {
+                opacity: 1;
+            }
+
+            70% {
+                opacity: 0.7;
+            }
+
+            72% {
+                opacity: 0.2;
+            }
+
+            77% {
+                opacity: 0.9;
+            }
+
+            100% {
+                opacity: 0.9;
+            }
+        }
+
+        @keyframes border-flicker {
+            0% {
+                opacity: 0.1;
+            }
+
+            2% {
+                opacity: 1;
+            }
+
+            4% {
+                opacity: 0.1;
+            }
+
+            8% {
+                opacity: 1;
+            }
+
+            70% {
+                opacity: 0.7;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Content container -->
+    <div class="lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
+    <div class="container">
+
+        <!-- Image and name container. Change to your pictue here. -->
+        <div style="text-align: center;margin-top: 1%">
+            <img src="imgs/minion-eye.jpeg" class="w3-margin" alt="image"
+                style="border-radius: 50%;max-height: 20vh; width: auto; height: auto;">
+            <p style="font-family: fantasy; font-size: 3vh; font-weight: bolder; color: #ffef64;">
+                @TheMinionaire
+            </p>
+            <p style="font-family: fantasy; font-size: 3vh; font-weight: bolder; color: #ffef64;">
+                The true betting experience is decentralized, on-chain, permissionless, trustless.
+            </p>
+            <a target="_blank" href="https://twitter.com/TheMinionaire"><span class='faulty-letter'><img
+                        src="imgs/twitter.png" class="w3-margin" alt="image"
+                        style="border-radius: 50%;max-height: 5vh; width: auto; height: auto;"></a>
+        </div>
+    </div>
+    <div style="text-align: center; margin-bottom: 2%;">
+        <a target="_blank" href="https://bookmaker.xyz/?qwest=giveaway">
+            <button class='glowing-btn'>
+                <img src="imgs/bookmaker.jpeg"
+                    style="z-index: -1;border-radius: 20%; margin: 0;position: absolute; left: 0; top:0; height:100%">
+                <div style="z-index: -1;margin: 0;position: absolute;bottom: 0; right: 0;height:100%">
+                    <img src="imgs/linea.png" style="border-radius: 50%;height:40%;margin-top: 37%;float: right;">
+                    <img src="imgs/arbitrum.png" style="height:40%;margin-top: 37%;float: right;">
+                    <img src="imgs/gnosis.png" style="height:40%;margin-top: 37%;float: right;">
+                    <img src="imgs/matic.webp" style="height:40%;margin-top: 37%;float: right;">
+                </div>
+                BOOKMAKER
+            </button>
+        </a>
+        <a target="_blank" href="https://app.divvy.bet/?referer=38GhBcarwJnMnYhxyMpicDwcYGvVrbYDh9ejYaPL6M6N">
+            <button class='glowing-btn'>
+                <img src="imgs/divvy.jpeg"
+                    style="z-index: -1;border-radius: 20%; margin: 0;position: absolute; left: 0; top:0; height:100%">
+                <img src="imgs/solana.png"
+                    style="z-index: -1;border-radius: 50%; margin: 0;position: absolute;bottom: 0; right: 0;height:50%">
+                DIVVY
+            </button>
+        </a>
+        <a target="_blank" href="https://colosseum.so/?aff=giveaway">
+            <button class='glowing-btn'>
+                <img src="imgs/colosseum.png"
+                    style="z-index: -1;border-radius: 20%; margin: 0;position: absolute; left: 0; top:0; height:100%">
+                <img src="imgs/solana.png"
+                    style="z-index: -1;border-radius: 50%; margin: 0;position: absolute;bottom: 0; right: 0;height:50%">
+                COLOSSEUM
+            </button>
+        </a>
+        <a target="_blank" href="https://beta.goal3.xyz/?r=giveaway">
+            <button class='glowing-btn'>
+                <img src="imgs/goal3.jpeg"
+                    style="z-index: -1;border-radius: 20%; margin: 0;position: absolute; left: 0; top:0; height:100%">
+                <img src="imgs/zkSync.png"
+                    style="z-index: -1;border-radius: 50%; margin: 0;position: absolute;bottom: 0; right: 0;height:50%">
+                GOAL3
+            </button>
+        </a>
+        <a target="_blank" href="https://sx.bet/?affiliate=giveaway">
+            <button class='glowing-btn'>
+                <img src="imgs/sxbet.jpeg"
+                    style="z-index: -1;border-radius: 20%; margin: 0;position: absolute; left: 0; top:0; height:100%">
+                <img src="imgs/sxbet.jpeg"
+                    style="z-index: -1;border-radius: 30%; margin: 0;position: absolute;bottom: 0; right: 0;height:50%">
+                SX BET
+            </button>
+        </a>
+        <a target="_blank" href="https://overtimemarkets.xyz/#/markets?referrerId=giveaway">
+            <button class='glowing-btn'>
+                <img src="imgs/overtime.jpeg"
+                    style="z-index: -1;border-radius: 20%; margin: 0;position: absolute; left: 0; top:0; height:100%">
+                <div style="z-index: -1;margin: 0;position: absolute;bottom: 0; right: 0;height:100%">
+                    <img src="imgs/base.png" style="height:40%;margin-top: 47%;float: right;">
+                    <img src="imgs/optimism.png" style="height:40%;margin-top: 47%;float: right;">
+                    <img src="imgs/arbitrum.png" style="height:40%;margin-top: 47%;float: right;">
+                </div>
+                OVERTIME MARKETS
+            </button>
+        </a>
+        <a target="_blank" href="https://housebets.io/?ref=giveaway">
+            <button class='glowing-btn'>
+                <img src="imgs/housebets.png"
+                    style="z-index: -1;border-radius: 20%; margin: 0;position: absolute; left: 0; top:0; height:100%">
+                <img src="imgs/matic.webp"
+                    style="z-index: -1;border-radius: 50%; margin: 0;position: absolute;bottom: 0; right: 0;height:50%">
+                HOUSEBETS
+            </button>
+        </a>
+    </div>
+    </div>
+
+    </div>
+    <script>
+        feather.replace()
+    </script>
+</body>
+
+</html>
